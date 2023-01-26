@@ -1,5 +1,4 @@
 const charactersContainer = document.getElementById('characters-container');
-
 const previousButton = document.getElementById('prev');
 previousButton.style.visibility = 'hidden';
 const nextButton = document.getElementById('next');
@@ -18,13 +17,13 @@ const getAllCharacters = () => {
         .then(data => {
             data.results.forEach(element => {
                 renderCharacterCard(element)
-            })            
+            });            
         })
         .catch(error => console.log(error))
 }
 getAllCharacters()
 
-/* Permite resetear la página y volver al inicio */
+/* Función que resetea la lista de personajes */
 const resetList = document.querySelector('.pageOne');
 resetList.addEventListener('click', () => {    
     charactersContainer.innerHTML = '';
@@ -106,7 +105,7 @@ function renderCharacterCard(data) {
     charactersContainer.appendChild(characterCard);
 }
 
-/* Función que obtiene los datos correspondientes a la página siguiente */
+/* Función que permite pasar a la siguiente página y mostrar los datos correpondientes a esta */
 const getCharactersByNextPage = (event) => {
     event.preventDefault();
     fetch(`https://rickandmortyapi.com/api/character/?page=${++pageCounter}`)
@@ -122,7 +121,7 @@ const getCharactersByNextPage = (event) => {
 }
 nextButton.addEventListener('click', getCharactersByNextPage);
 
-/* Función que obtiene los datos correspondientes a la página anterior */
+/* Función que permite regresar a la página anterior y mostrar los datos correspondientes a esta */
 const getCharactersByPrevPage = (event) => {
     event.preventDefault();
     fetch(`https://rickandmortyapi.com/api/character/?page=${--pageCounter}`)
@@ -138,16 +137,16 @@ const getCharactersByPrevPage = (event) => {
 }
 previousButton.addEventListener('click', getCharactersByPrevPage);
 
-/* Muestra un Alert dependiendo la acción que lo requiera */
 const alertDialog = document.getElementById('alertSpan');
 const alertText = document.getElementById('alert-text');
 const closeAlert = document.querySelector('.close-alert');
-
+/* Muestra un Alert dependiendo la acción que lo requiera */
 const showAlertSpan = () => {      
     alertDialog.classList.remove('hide');
     alertDialog.classList.add('show');
     setTimeout(() => { closeAlertSpan(); }, 5000);
 }
+/* Función que funciona cuando el estado de la petición devuelve el error 404 */
 const dataNotFound = () => {
     alertDialog.classList.remove('hide');
     alertDialog.classList.add('show');    
