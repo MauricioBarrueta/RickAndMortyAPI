@@ -46,7 +46,7 @@ const getCharacterByName = () => {
 }
 const btnFilterCharacters = document.querySelector('.btnFilterList');
 btnFilterCharacters.addEventListener('click', () => { 
-    characterNameValue.value != "" ?  getCharacterByName() : showAlertSpan(), alertText.innerHTML = 'No has ingresado ningún personaje';
+    characterNameValue.value != "" ?  getCharacterByName() : showAlertSpan(), alertText.innerHTML = 'Ingresa el nombre del personaje';
 })
 
 /* Función que renderiza los datos obtenidos de los fetch */
@@ -90,10 +90,10 @@ function renderCharacterCard(data) {
     /* Obtiene el nombre de la dimension correspondiente al url de cada ubicación */     
     fetch(`${data.location.url}`)
         .then(res => { return res.status == 404 ? alert('Error al obtener la dimensión') : res.json(); })
-        .then(data => {                         
+        .then(data => {
             characterDimension.textContent = ` : ${data.dimension}`;
         })
-        .catch(error => console.clear(error))
+        .catch(error => console.warn(error))
     characterInfo.appendChild(characterDimension);
    
     const characterStatus = document.createElement('p');
@@ -109,8 +109,9 @@ function renderCharacterCard(data) {
 const getCharactersByNextPage = (event) => {
     event.preventDefault();
     fetch(`https://rickandmortyapi.com/api/character/?page=${++pageCounter}`)
-        .then(res => { return res.status == 404 ? alert('Error, no existen más páginas') : res.json(); })
+        .then(res => res.json())
         .then(data => {
+            pageCounter === data.info.pages ? nextButton.style.visibility = 'hidden' :
             pageValidation();
             charactersContainer.innerHTML = '';
             data.results.forEach(element => {
@@ -127,6 +128,7 @@ const getCharactersByPrevPage = (event) => {
     fetch(`https://rickandmortyapi.com/api/character/?page=${--pageCounter}`)
         .then(res => { return res.status == 404 ? alert('Error inesperado') : res.json(); })
         .then(data => {
+            if(pageCounter < data.info.pages) nextButton.style.visibility = 'visible'
             pageValidation();
             charactersContainer.innerHTML = '';
             data.results.forEach(element => {
@@ -150,7 +152,7 @@ const showAlertSpan = () => {
 const dataNotFound = () => {
     alertDialog.classList.remove('hide');
     alertDialog.classList.add('show');    
-    alertText.innerHTML = 'El personaje no existe';
+    alertText.innerHTML = 'No existe ningn personaje con este nombre';
     getAllCharacters();
     setTimeout(() => { closeAlertSpan(); }, 5000);
 }
