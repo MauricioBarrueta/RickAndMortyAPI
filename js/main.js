@@ -1,7 +1,8 @@
 const charactersContainer = document.getElementById('characters-container');
-const previousButton = document.getElementById('prev');
+const characterNameValue = document.querySelector('.characterName');
+
+const previousButton = document.getElementById('prev'), nextButton = document.getElementById('next');
 previousButton.style.visibility = 'hidden';
-const nextButton = document.getElementById('next');
 let pageCounter = 1;
 /* Valida si la página corresponde a la 1 oculta el botón de página anterior */
 const pageValidation = () => {
@@ -27,11 +28,11 @@ getAllCharacters()
 const resetList = document.querySelector('.pageOne');
 resetList.addEventListener('click', () => {    
     charactersContainer.innerHTML = '';
+    characterNameValue.value = '';
     getAllCharacters();
 })
 
 /* Función que filtra los personajes por su nombre */
-const characterNameValue = document.querySelector('.characterName');
 const getCharacterByName = () => {  
     fetch(`https://rickandmortyapi.com/api/character/?name=${characterNameValue.value}`)        
         .then(res => { return res.status == 404 ? dataNotFound() : res.json()})        
@@ -46,7 +47,8 @@ const getCharacterByName = () => {
 }
 const btnFilterCharacters = document.querySelector('.btnFilterList');
 btnFilterCharacters.addEventListener('click', () => { 
-    characterNameValue.value != "" ?  getCharacterByName() : showAlertSpan(), alertText.innerHTML = 'Ingresa el nombre del personaje';
+    characterNameValue.value != "" ?  getCharacterByName() 
+        : showAlertSpan(), alertText.innerHTML = 'Ingresa el nombre del personaje';
 })
 
 /* Función que renderiza los datos obtenidos de los fetch */
@@ -139,9 +141,8 @@ const getCharactersByPrevPage = (event) => {
 }
 previousButton.addEventListener('click', getCharactersByPrevPage);
 
-const alertDialog = document.getElementById('alertSpan');
-const alertText = document.getElementById('alert-text');
-const closeAlert = document.querySelector('.close-alert');
+const alertDialog = document.getElementById('alertSpan'), alertText = document.getElementById('alert-text'), 
+    closeAlert = document.querySelector('.close-alert');
 /* Muestra un Alert dependiendo la acción que lo requiera */
 const showAlertSpan = () => {      
     alertDialog.classList.remove('hide');
