@@ -1,8 +1,7 @@
-🇲🇽 Este sitio web permite consultar todos y cada uno de los personajes de la serie Rick and Morty, así como los datos correspondientes de estos.
+🇲🇽 Sitio web desarrollado con JavaScript, la biblioteca jQuery, CSS y Bootstrap, publicado mediante GitHub Pages y conectado a la API de Rick and Morty (rickandmortyapi.com).
    
-🇺🇸 This website allows you to consult each and every one of the characters of the Rick and Morty series, as well as their corresponding data.
+🇺🇸 Website developed with JavaScript, the jQuery library, CSS and Bootstrap, published via GitHub Pages and connected to the Rick and Morty API (rickandmortyapi.com).
 
 🔗 https://mauriciobarrueta.github.io/RickAndMortyAPI/
 
-
-![RMAPI](https://github.com/MauricioBarrueta/RickAndMortyAPI/assets/60496232/6de34fbf-739f-473f-a5ae-286c0a67a705)
+![ricknmorty-js](https://github.com/user-attachments/assets/8c810127-ad9e-414a-82f3-e4ede5075d11)
