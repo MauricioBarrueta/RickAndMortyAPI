@@ -1,6 +1,6 @@
-🇲🇽 Sitio web desarrollado con JavaScript, la biblioteca jQuery, CSS y Bootstrap, publicado mediante GitHub Pages y conectado a la API de Rick and Morty (rickandmortyapi.com).
-   
-🇺🇸 Website developed with JavaScript, the jQuery library, CSS and Bootstrap, published via GitHub Pages and connected to the Rick and Morty API (rickandmortyapi.com).
+🇲🇽 Sitio web desarrollado con JavaScript, CSS y Bootstrap, publicado mediante GitHub Pages y conectado a la API de Rick and Morty.
+
+🇺🇸 Website developed with JavaScript, using CSS and Bootstrap, deployed on GitHub Pages and connected to the Rick and Morty API.
 
 🔗 https://mauriciobarrueta.github.io/RickAndMortyAPI/
 
